@@ -155,5 +155,82 @@ obj_emp2 = employee2()
 func(obj_emp2)
 
 # Run-time Polymorphism:
+'''A run-time Polymorphism is also, called as dynamic polymorphism where it gets resolved into the run time.
+One common example of Run-time polymorphism is “method overriding”.'''
+class employee():
+   def __init__(self,name,age,id,salary):  
+       self.name = name
+       self.age = age
+       self.salary = salary
+       self.id = id
+def earn(self):
+        pass
+ 
+class childemployee1(employee):
+ 
+   def earn(self): #//Run-time polymorphism
+      print("no money")
+ 
+class childemployee2(employee):
+ 
+   def earn(self):
+       print("has money")
+ 
+# c = childemployee1
+# c.earn(employee)
+# d = childemployee2
+# d.earn(employee)
 
+# Encapsulation:
+'''In a raw form, encapsulation basically means binding up of data in a single class.
+Python does not have any private keyword, unlike Java. A class shouldn’t be directly accessed 
+but be prefixed in an underscore.'''
 
+class employee(object):
+    def __init__(self):   
+        self.name = 1234
+        self._age = 1234
+        self.__salary = 1234
+    
+# object1 = employee()
+# print(object1.name)
+# print(object1._age)
+# print(object1.__salary)
+
+'''Explanation: You will get this question what is the underscore and error? 
+Well, python class treats the private variables as(__salary) which can not be accessed directly.
+So, I have made use of the setter method which provides indirect access to them in my next example.'''
+
+class employee():
+    def __init__(self):
+        self.__maxearn = 1000000
+    def earn(self):
+        print("earning is:{}".format(self.__maxearn))
+ 
+    def setmaxearn(self,earn): #//setter method used for accesing private class
+        self.__maxearn = earn
+ 
+emp1 = employee()
+emp1.earn()
+ 
+emp1.__maxearn = 10000
+emp1.earn()
+ 
+emp1.setmaxearn(1000000000)
+emp1.earn()
+
+# Abstraction:
+'''An abstract class cannot be instantiated which simply means you cannot create objects for this type of class.
+It can only be used for inheriting the functionalities.'''
+
+from abc import ABC,abstractmethod
+class employee(ABC):
+    def emp_id(self,id,name,age,salary):   # //Abstraction
+        pass
+ 
+class childemployee1(employee):
+    def emp_id(self,id):
+        print("emp_id is 12345")
+ 
+emp1 = childemployee1()
+emp1.emp_id(id)
